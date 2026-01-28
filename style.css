@@ -1,4 +1,38 @@
 * {
+    /* Theme variables */
+    :root {
+        --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --container-bg: #fff;
+        --container-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        --text-color: #333;
+        --input-bg: #fff;
+        --input-border: #e0e0e0;
+        --input-focus: #667eea;
+        --todo-bg: #f8f9fa;
+        --todo-text: #333;
+        --todo-completed: #999;
+        --delete-bg: #ff4757;
+        --delete-hover: #e84118;
+        --toggle-bg: #f1f1f1;
+        --toggle-color: #333;
+    }
+
+    body.dark-theme {
+        --bg-gradient: linear-gradient(135deg, #232526 0%, #414345 100%);
+        --container-bg: #232526;
+        --container-shadow: 0 10px 40px rgba(0,0,0,0.7);
+        --text-color: #f1f1f1;
+        --input-bg: #2c2f34;
+        --input-border: #444;
+        --input-focus: #667eea;
+        --todo-bg: #2c2f34;
+        --todo-text: #f1f1f1;
+        --todo-completed: #888;
+        --delete-bg: #ff4757;
+        --delete-hover: #e84118;
+        --toggle-bg: #333;
+        --toggle-color: #f1f1f1;
+    }
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,25 +40,28 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: var(--bg-gradient);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+        color: var(--text-color);
+        transition: background 0.3s, color 0.3s;
 }
 
 .container {
-    background: white;
+    background: var(--container-bg);
     border-radius: 15px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--container-shadow);
     padding: 30px;
     width: 100%;
     max-width: 500px;
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
 h1 {
-    color: #333;
+    color: var(--text-color);
     text-align: center;
     margin-bottom: 25px;
     font-size: 28px;
@@ -39,15 +76,17 @@ h1 {
 #todoInput {
     flex: 1;
     padding: 12px 15px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--input-border);
     border-radius: 8px;
     font-size: 16px;
-    transition: border-color 0.3s;
+    background: var(--input-bg);
+    color: var(--text-color);
+    transition: border-color 0.3s, background 0.3s, color 0.3s;
 }
 
 #todoInput:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: var(--input-focus);
 }
 
 #addBtn {
@@ -74,7 +113,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #f8f9fa;
+    background: var(--todo-bg);
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 8px;
@@ -95,20 +134,20 @@ h1 {
 
 .todo-text {
     flex: 1;
-    color: #333;
+    color: var(--todo-text);
     font-size: 16px;
     transition: all 0.3s;
 }
 
 .todo-text.completed {
     text-decoration: line-through;
-    color: #999;
+    color: var(--todo-completed);
     opacity: 0.7;
 }
 
 .delete-btn {
     padding: 8px 16px;
-    background: #ff4757;
+    background: var(--delete-bg);
     color: white;
     border: none;
     border-radius: 6px;
@@ -118,7 +157,7 @@ h1 {
 }
 
 .delete-btn:hover {
-    background: #e84118;
+    background: var(--delete-hover);
 }
 
 .empty-state {
@@ -126,4 +165,26 @@ h1 {
     color: #999;
     padding: 40px 20px;
     font-size: 16px;
+}
+
+/* Theme toggle button */
+#theme-toggle {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 10;
+    background: var(--toggle-bg);
+    color: var(--toggle-color);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: background 0.3s, color 0.3s;
+}
+#theme-toggle:hover {
+    background: var(--input-focus);
+    color: #fff;
 }

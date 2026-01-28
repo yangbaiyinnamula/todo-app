@@ -1,6 +1,39 @@
+
 const todoInput = document.getElementById('todoInput');
 const addBtn = document.getElementById('addBtn');
 const todoList = document.getElementById('todoList');
+const themeToggle = document.getElementById('theme-toggle');
+
+// Theme logic
+function setTheme(theme) {
+    if (theme === 'dark') {
+        document.body.classList.add('dark-theme');
+        themeToggle.textContent = '☀️';
+    } else {
+        document.body.classList.remove('dark-theme');
+        themeToggle.textContent = '🌙';
+    }
+    localStorage.setItem('theme', theme);
+}
+
+function getPreferredTheme() {
+    const saved = localStorage.getItem('theme');
+    if (saved) return saved;
+    // Use system preference if no saved theme
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function toggleTheme() {
+    const current = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+    setTheme(current === 'dark' ? 'light' : 'dark');
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
+}
+
+// Set initial theme
+setTheme(getPreferredTheme());
 
 // Load todos from localStorage
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
