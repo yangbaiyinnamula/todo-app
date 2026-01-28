@@ -1,108 +1,147 @@
 * {
-    /* Theme variables */
-    :root {
-        --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        --container-bg: #fff;
-        --container-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-        --text-color: #333;
-        --input-bg: #fff;
-        --input-border: #e0e0e0;
-        --input-focus: #667eea;
-        --todo-bg: #f8f9fa;
-        --todo-text: #333;
-        --todo-completed: #999;
-        --delete-bg: #ff4757;
-        --delete-hover: #e84118;
-        --toggle-bg: #f1f1f1;
-        --toggle-color: #333;
-    }
-
-    body.dark-theme {
-        --bg-gradient: linear-gradient(135deg, #232526 0%, #414345 100%);
-        --container-bg: #232526;
-        --container-shadow: 0 10px 40px rgba(0,0,0,0.7);
-        --text-color: #f1f1f1;
-        --input-bg: #2c2f34;
-        --input-border: #444;
-        --input-focus: #667eea;
-        --todo-bg: #2c2f34;
-        --todo-text: #f1f1f1;
-        --todo-completed: #888;
-        --delete-bg: #ff4757;
-        --delete-hover: #e84118;
-        --toggle-bg: #333;
-        --toggle-color: #f1f1f1;
-    }
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Theme variables */
+:root {
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --container-bg: #ffffff;
+    --container-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    --text-color: #2d3748;
+    --heading-color: #1a202c;
+    --input-bg: #f7fafc;
+    --input-border: #e2e8f0;
+    --input-focus: #667eea;
+    --todo-bg: #ffffff;
+    --todo-hover-bg: #f7fafc;
+    --todo-text: #2d3748;
+    --todo-completed: #a0aec0;
+    --delete-bg: #fc8181;
+    --delete-hover: #f56565;
+    --toggle-bg: rgba(255, 255, 255, 0.2);
+    --toggle-color: #ffffff;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme {
+    --bg-gradient: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    --container-bg: #2d3748;
+    --container-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    --text-color: #e2e8f0;
+    --heading-color: #f7fafc;
+    --input-bg: #1a202c;
+    --input-border: #4a5568;
+    --input-focus: #667eea;
+    --todo-bg: #1a202c;
+    --todo-hover-bg: #4a5568;
+    --todo-text: #e2e8f0;
+    --todo-completed: #718096;
+    --delete-bg: #fc8181;
+    --delete-hover: #f56565;
+    --toggle-bg: rgba(0, 0, 0, 0.3);
+    --toggle-color: #f7fafc;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: var(--bg-gradient);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg-gradient);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-        color: var(--text-color);
-        transition: background 0.3s, color 0.3s;
+    color: var(--text-color);
+    transition: background 0.4s ease, color 0.3s ease;
+    line-height: 1.6;
 }
 
 .container {
     background: var(--container-bg);
-    border-radius: 15px;
+    border-radius: 24px;
     box-shadow: var(--container-shadow);
-    padding: 30px;
+    padding: 40px;
     width: 100%;
-    max-width: 500px;
-    transition: background 0.3s, box-shadow 0.3s;
+    max-width: 540px;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 h1 {
-    color: var(--text-color);
+    color: var(--heading-color);
     text-align: center;
-    margin-bottom: 25px;
-    font-size: 28px;
+    margin-bottom: 32px;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .input-container {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 28px;
 }
 
 #todoInput {
     flex: 1;
-    padding: 12px 15px;
+    padding: 14px 18px;
     border: 2px solid var(--input-border);
-    border-radius: 8px;
+    border-radius: 12px;
     font-size: 16px;
     background: var(--input-bg);
     color: var(--text-color);
-    transition: border-color 0.3s, background 0.3s, color 0.3s;
+    transition: all 0.3s ease;
+    font-weight: 400;
 }
 
 #todoInput:focus {
     outline: none;
     border-color: var(--input-focus);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-1px);
+}
+
+#todoInput::placeholder {
+    color: #a0aec0;
 }
 
 #addBtn {
-    padding: 12px 25px;
-    background: #667eea;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
 #addBtn:hover {
-    background: #5568d3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+#addBtn:active {
+    transform: translateY(0);
 }
 
 #todoList {
@@ -114,77 +153,121 @@ h1 {
     align-items: center;
     justify-content: space-between;
     background: var(--todo-bg);
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    border-radius: 14px;
+    border: 1px solid var(--input-border);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .todo-item:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
+    background: var(--todo-hover-bg);
 }
 
 .todo-checkbox {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     cursor: pointer;
-    margin-right: 12px;
+    margin-right: 16px;
+    accent-color: #667eea;
+    transition: transform 0.2s ease;
+}
+
+.todo-checkbox:hover {
+    transform: scale(1.1);
 }
 
 .todo-text {
     flex: 1;
     color: var(--todo-text);
     font-size: 16px;
-    transition: all 0.3s;
+    font-weight: 450;
+    transition: all 0.3s ease;
 }
 
 .todo-text.completed {
     text-decoration: line-through;
     color: var(--todo-completed);
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
 .delete-btn {
-    padding: 8px 16px;
+    padding: 8px 18px;
     background: var(--delete-bg);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.2s ease;
 }
 
 .delete-btn:hover {
     background: var(--delete-hover);
+    transform: scale(1.05);
+}
+
+.delete-btn:active {
+    transform: scale(0.98);
 }
 
 .empty-state {
     text-align: center;
-    color: #999;
-    padding: 40px 20px;
+    color: #a0aec0;
+    padding: 48px 20px;
     font-size: 16px;
+    font-weight: 400;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Theme toggle button */
 #theme-toggle {
     position: absolute;
-    top: 24px;
-    right: 24px;
+    top: 28px;
+    right: 28px;
     z-index: 10;
     background: var(--toggle-bg);
     color: var(--toggle-color);
     border: none;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    transition: background 0.3s, color 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
+
 #theme-toggle:hover {
-    background: var(--input-focus);
-    color: #fff;
+    transform: rotate(180deg) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+#theme-toggle:active {
+    transform: rotate(180deg) scale(1.05);
 }
