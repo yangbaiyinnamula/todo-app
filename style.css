@@ -50,7 +50,7 @@ body.dark-theme {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     background: var(--bg-gradient);
     min-height: 100vh;
     display: flex;
@@ -195,7 +195,7 @@ h1 {
     flex: 1;
     color: var(--todo-text);
     font-size: 16px;
-    font-weight: 450;
+    font-weight: 500;
     transition: all 0.3s ease;
 }
 
@@ -261,6 +261,7 @@ h1 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
 }
 
 #theme-toggle:hover {
